@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Pie</h1>
+
+<script>
+function chart3(bar, JSX=document.body) {
+  if(!bar) {
+    bar = [
+      { name: 'HTML', per: '3%', bg: '#BC3603' },
+      { name: 'CSS', per: '5%', bg: '#D97904' },
+      { name: 'JavaScript', per: '7%', bg: '#F2B705' },
+      { name: 'PHP', per: '25%', bg: '#86AD00' },
+      { name: 'Firebase', per: '60%', bg: '#0092B9' }
+    ];
+    bar.forEach(v => v.per = parseInt(v.per));
+  }
+
+  var rotate, CSS, JS, HTML='';
+  
+  rotate = [
+    180, // 0 - 10
+    170, //10 - 30
+    150, //30 - 50
+    130, //50 - 
+    0  //
+  ];
+  
+  CSS = [
+    `
+      height: 300px;
+    `,
+    `
+      position: absolute;
+      width: 300px;
+    `,
+    `
+      height: 300px;
+      width: 150px; 
+      box-sizing: border-box;
+      margin-left: 150px;
+      border-radius: 0 150px 150px 0;
+    `
+  ];
+  
+  JS = [
+    `
+      
+    `
+  ];
+  
+  HTML += `<section style="${CSS[0]}">`;
+  HTML += bar.map((v,i,a) => {
+    return `
+    <div style="${CSS[1]}
+    transform: rotate(${rotate[i]}deg);
+    ">
+      <div style="${CSS[2]}
+      background: ${v.bg};"></div>
+    </div>
+    `;
+  }).join('');
+  HTML += `</section>`;
+  
+  JSX.innerHTML += HTML;
+} chart3();
+</script>
+
+<h1>Hello Sun!</h1>
+
+</body>
+</html>
